@@ -2,7 +2,6 @@ package tests;
 
 import helpers.LogoutButton;
 import helpers.TestConfig;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -10,8 +9,6 @@ import pages.AccountPage;
 import pages.BankingTransactionHistoryPage;
 import pages.CustomerPage;
 import pages.LoginPage;
-
-import java.util.List;
 
 public class DepositAndTransactionsCheck  extends TestConfig {
 
