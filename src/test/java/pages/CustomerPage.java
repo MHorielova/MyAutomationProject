@@ -9,7 +9,7 @@ public class CustomerPage extends BasePage {
 
     @FindBy(id = "userSelect")
     public WebElement userSelect;
-    @FindBy(xpath= "//button[text()='Login']")
+    @FindBy(xpath= "//button[@type='submit']")
     public WebElement loginButton;
     @FindBy(xpath = "//option[@class='ng-binding ng-scope' and @value=3]")
     public WebElement userRon;
@@ -19,5 +19,4 @@ public class CustomerPage extends BasePage {
     public CustomerPage(WebDriver driver) {
         super(driver);
     }
-
 }

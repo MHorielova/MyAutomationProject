@@ -1,33 +1,33 @@
 package tests;
 
-import helpers.LogoutButton;
+import helpers.HeadersButtons;
 import helpers.TestConfig;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import helpers.Waiting;
 import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.CustomerPage;
-import pages.LoginPage;
+import pages.SelectRole;
 
 public class ExistedCustomerLogin extends TestConfig {
 
-    private final LoginPage loginPage = new LoginPage(driver);
+    private final SelectRole selectRole = new SelectRole(driver);
     private final CustomerPage customerPage = new CustomerPage(driver);
-    private final LogoutButton logoutButton = new LogoutButton(driver);
+    private final HeadersButtons headersButtons = new HeadersButtons(driver);
     private final AccountPage accountPage = new AccountPage(driver);
+    private final Waiting waiting = new Waiting(driver);
 
     @Test
     public void customerLogin() {
-    loginPage.customerLoginButton.click();
-    new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(customerPage.userSelect));
+    selectRole.customerLoginButton.click();
+    waiting.timeout(customerPage.userSelect);
     customerPage.userSelect.click();
     customerPage.userRon.click();
     customerPage.loginButton.click();
-    logoutButton.logoutButton.isDisplayed();
-    accountPage.depositButton.isDisplayed();
-    accountPage.withdrawlButton.isDisplayed();
-    accountPage.transactionsButton.isDisplayed();
-    logoutButton.logoutButton.click();
+    waiting.timeout(headersButtons.logoutButton);
+    waiting.timeout(accountPage.depositButton);
+    waiting.timeout(accountPage.withdrawlButton);
+    waiting.timeout(accountPage.transactionsButton);
+    headersButtons.logoutButton.click();
     customerPage.yourNameText.isDisplayed();
     }
 }
